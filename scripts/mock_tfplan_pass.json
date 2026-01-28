@@ -1,0 +1,44 @@
+{
+    "format_version": "1.0",
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_s3_bucket.good_bucket",
+                    "type": "aws_s3_bucket",
+                    "name": "good_bucket",
+                    "values": {
+                        "bucket": "my-good-bucket",
+                        "tags": {
+                            "owner": "safi",
+                            "environment": "dev"
+                        },
+                        "acl": "private",
+                        "logging": [
+                            {
+                                "target_bucket": "logs"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "address": "aws_security_group.safe_sg",
+                    "type": "aws_security_group",
+                    "name": "safe_sg",
+                    "values": {
+                        "ingress": [
+                            {
+                                "from_port": 443,
+                                "to_port": 443,
+                                "protocol": "tcp",
+                                "cidr_blocks": [
+                                    "0.0.0.0/0"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    }
+}

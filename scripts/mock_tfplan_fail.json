@@ -1,0 +1,46 @@
+{
+    "format_version": "1.0",
+    "planned_values": {
+        "root_module": {
+            "resources": [
+                {
+                    "address": "aws_s3_bucket.bad_bucket",
+                    "type": "aws_s3_bucket",
+                    "name": "bad_bucket",
+                    "values": {
+                        "bucket": "my-bad-bucket",
+                        "tags": {
+                            "Description": "Missing mandatory tags"
+                        },
+                        "acl": "public-read"
+                    }
+                },
+                {
+                    "address": "aws_security_group.unsafe_sg",
+                    "type": "aws_security_group",
+                    "name": "unsafe_sg",
+                    "values": {
+                        "ingress": [
+                            {
+                                "from_port": 22,
+                                "to_port": 22,
+                                "protocol": "tcp",
+                                "cidr_blocks": [
+                                    "0.0.0.0/0"
+                                ]
+                            }
+                        ]
+                    }
+                },
+                {
+                    "address": "aws_iam_policy.admin_policy",
+                    "type": "aws_iam_policy",
+                    "name": "admin_policy",
+                    "values": {
+                        "policy": "{\"Version\": \"2012-10-17\", \"Statement\": [{\"Effect\": \"Allow\", \"Action\": \"*\", \"Resource\": \"*\"}]}"
+                    }
+                }
+            ]
+        }
+    }
+}
